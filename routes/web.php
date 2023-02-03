@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Registration;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AdminPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,21 @@ Route::post('/register',[Registration::class,'store'])->middleware('guest');
 
 Route::get('/login',[Login::class,'create']);
 Route::post('/login',[Login::class,'store']);
-Route::get('/logout',[Login::class,'destroy']);
+Route::post('/logout',[Login::class,'destroy']);
 
 
 // Comments
 
 Route::post('posts/{post:id}/comments',[CommentController::class,'store']);
-// Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
+
+
+// Admin Dashboard
+
+Route::get('dashboard',[AdminPostController::class,'show']);
+Route::get('/admin/posts',[AdminPostController::class,'create']);
+Route::post('/admin/posts',[AdminPostController::class,'store']);
+Route::put('/admin/posts/{post:id}',[AdminPostController::class,'update']);
+Route::delete('/admin/posts/{post:id}',[AdminPostController::class,'delete']);
+Route::get('/admin/posts/{post:id}/edit',[AdminPostController::class,'edit']);
+
+

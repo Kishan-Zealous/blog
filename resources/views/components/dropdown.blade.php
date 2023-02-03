@@ -2,7 +2,6 @@
 <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
 <select 
 class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold" 
-{{-- onchange="handlechange(event,'/?{{http_build_query(request()->except($path))}}&{{ $path }}')" --}}
 onchange="handlechange(event,'{{http_build_query(request()->except($path,'page'))}}','{{ $path }}')"
 >
     <option value="{{ $optionName }}" disabled selected>{{ $optionName }}
