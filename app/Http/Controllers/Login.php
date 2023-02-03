@@ -11,11 +11,6 @@ class Login extends Controller
         return view('forms.login');
     }
 
-    public function destroy(){
-        auth()->logout();
-        return redirect('/');
-    }
-
     public function store(){
         $attributes = request()->validate([
             'email'=> ['required','email'],
@@ -23,6 +18,7 @@ class Login extends Controller
         ]);
 
         if(auth()->attempt($attributes)){
+            session()->regenerate();
             return redirect('/')->with('success','you are logged in');
         }
 
@@ -33,4 +29,11 @@ class Login extends Controller
         // ->withInput()
         // ->withErrors(['invalid'=>'invalid creditionals']);
     }
+
+    
+    public function destroy(){
+        auth()->logout();
+        return redirect('/')->with('success','you are logged out');
+    }
+
 }

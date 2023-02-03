@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Registration;
@@ -30,3 +30,9 @@ Route::post('/register',[Registration::class,'store'])->middleware('guest');
 Route::get('/login',[Login::class,'create']);
 Route::post('/login',[Login::class,'store']);
 Route::get('/logout',[Login::class,'destroy']);
+
+
+// Comments
+
+Route::post('posts/{post:id}/comments',[CommentController::class,'store']);
+// Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);

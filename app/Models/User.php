@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    // public function comments(){
+    //     return $this->hasMany(Comments::class);
+    // }
+
 
     // Password mutator naming convension set_____Arribute
     public function setPasswordAttribute($password){

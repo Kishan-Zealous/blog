@@ -11,19 +11,28 @@
         <a href="/register" class="text-xs font-bold uppercase">Register</a>
         <a href="/login" class="text-xs font-bold uppercase">Log in</a>   
         @endguest
-
+        
+            
+      
         @auth
-        <form action="/logout" method="GET">
+
+        <a href="/logout" class="text-xs font-bold uppercase">Log out</a>   
+        {{-- <form action="/logout" method="GET">
             @csrf
             <input type="submit" value="Logout">
-        </form>
+        </form> --}}
+        
         @endauth
         <a href="/register" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-            Subscrib
+            Subscribe
         </a>
     </div>
 </nav>
-
+@if (session()->has('success'))
+<p>
+    {{ session('success') }}
+</p>
+@endif
 <header class="max-w-xl mx-auto mt-20 text-center">
     <h1 class="text-4xl">
         Latest <span class="text-blue-500">Laravel From Scratch</span> News
