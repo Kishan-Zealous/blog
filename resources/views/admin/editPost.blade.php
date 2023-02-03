@@ -60,6 +60,7 @@
                     {{ __('thumbnail') }}
                 </label>
                 <input class="w-full p-2 border border-gray-400 rounded" type="file" id="thumbnail" name="thumbnail">
+                <img src="/storage/{{ $post->thumbnail }}" alt="sss">
                 @error('thumbnail')
                     <p class="text-red-500 font-bold">{{ $message }}</p>
                 @enderror
